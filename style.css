@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -1; /* Ensures video stays in the background */
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.neon-title {
+    font-size: 5rem;
+    color: rgb(239, 233, 239);
+    text-shadow: 0 0 20px rgb(29, 18, 29), 0 0 30px rgb(22, 14, 22), 0 0 40px rgb(33, 18, 33);
+    animation: glow 1.5s infinite alternate;
+}
+
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px violet, 0 0 20px violet;
+    }
+    to {
+        text-shadow: 0 0 30px violet, 0 0 40px violet;
+    }
+}
+
+.slider-container {
+    perspective: 1000px;
+}
+
+.circle-slider {
+    position: relative;
+    width: 200px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    animation: rotateSlider 10s infinite linear;
+}
+
+.slider-image {
+    width: 150px;
+    height: 150px;
+    background-color: gray;
+    border-radius: 10px;
+    box-shadow: 0 0 15px gray;
+    position: absolute;
+    transform-origin: center;
+    backface-visibility: hidden;
+}
+
+/* 3D positioning of the images */
+.circle-slider img:nth-child(1) { transform: rotateX(0deg) translateZ(150px); }
+.circle-slider img:nth-child(2) { transform: rotateX(72deg) translateZ(150px); }
+.circle-slider img:nth-child(3) { transform: rotateX(144deg) translateZ(150px); }
+.circle-slider img:nth-child(4) { transform: rotateX(216deg) translateZ(150px); }
+.circle-slider img:nth-child(5) { transform: rotateX(288deg) translateZ(150px); }
+
+@keyframes rotateSlider {
+    from { transform: rotateX(0deg); }
+    to { transform: rotateX(360deg); }
+}
+
+.image-selectors {
+    margin-top: 20px;
+}
+
+.image-selectors button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.image-selectors button:hover {
+    background-color: #555;
+}
+
+@keyframes backgroundShake {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-5px, 5px); }
+    50% { transform: translate(5px, -5px); }
+    75% { transform: translate(-5px, -5px); }
+    100% { transform: translate(5px, 5px); }
+}
